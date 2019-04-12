@@ -29,22 +29,6 @@ public class UptimeIntentService extends IntentService {
     }
 
     private void triggerNotification(long uptimeMinutes) {
-        String channelId = "uptime";
-
-        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(channelId, "Uptime", NotificationManager.IMPORTANCE_DEFAULT);
-            notificationManager.createNotificationChannel(channel);
-        }
-
-        Notification notification = new NotificationCompat.Builder(this, channelId)
-                .setContentTitle("Uptime")
-                .setContentText("Your device is up for " + uptimeMinutes + " minutes")
-                .setAutoCancel(true)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .build();
-
-        notificationManager.notify(0, notification);
     }
 
 }
